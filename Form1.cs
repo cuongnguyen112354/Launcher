@@ -296,5 +296,25 @@ namespace Launcher
             }
             return true;
         }
+
+        private void uninstallBtn_Click(object sender, EventArgs e)
+        {
+            // Tìm tất cả các file bắt đầu bằng "unins" và kết thúc bằng ".exe"
+            string[] uninsFiles = Directory.GetFiles(rootPath, "unins*.exe");
+
+            if (uninsFiles.Length > 0)
+            {
+                // Lấy file đầu tiên tìm được
+                string uninsFile = uninsFiles[0];
+
+                Process.Start(uninsFile);
+                Application.Exit();
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy file gỡ cài đặt", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }

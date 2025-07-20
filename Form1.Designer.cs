@@ -35,6 +35,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblSize = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.uninstallBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,6 +110,18 @@
             this.label1.Text = "Game Name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // uninstallBtn
+            // 
+            this.uninstallBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uninstallBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uninstallBtn.Location = new System.Drawing.Point(76, 238);
+            this.uninstallBtn.Name = "uninstallBtn";
+            this.uninstallBtn.Size = new System.Drawing.Size(75, 23);
+            this.uninstallBtn.TabIndex = 7;
+            this.uninstallBtn.Text = "Uninstall";
+            this.uninstallBtn.UseVisualStyleBackColor = true;
+            this.uninstallBtn.Click += new System.EventHandler(this.uninstallBtn_Click);
+            // 
             // Launcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -116,6 +129,7 @@
             this.BackgroundImage = global::Launcher.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(716, 351);
+            this.Controls.Add(this.uninstallBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblSize);
             this.Controls.Add(this.progressBar1);
@@ -142,6 +156,7 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label lblSize;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button uninstallBtn;
     }
 }
 
