@@ -120,6 +120,7 @@
             this.uninstallBtn.TabIndex = 7;
             this.uninstallBtn.Text = "Uninstall";
             this.uninstallBtn.UseVisualStyleBackColor = true;
+            this.uninstallBtn.Visible = false;
             this.uninstallBtn.Click += new System.EventHandler(this.uninstallBtn_Click);
             // 
             // Launcher

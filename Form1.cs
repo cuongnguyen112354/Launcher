@@ -13,7 +13,7 @@ namespace Launcher
 {
     public partial class Launcher : Form
     {
-        private static string gameString = "Pulse Frenzy";
+        private static string gameString = "3D Beginner";
         private string rootPath = Directory.GetParent(Application.StartupPath).Parent.Parent.FullName;
         private string versionFile = Path.Combine(Directory.GetParent(Application.StartupPath).Parent.FullName, "version.txt");
         private string versionContent => File.Exists(versionFile) ? File.ReadAllText(versionFile) : "";
@@ -48,6 +48,7 @@ namespace Launcher
             else
             {
                 controlBtn.Text = "Play";
+                uninstallBtn.Visible = true;
             }
 
             controlBtn.Enabled = true;
@@ -66,6 +67,7 @@ namespace Launcher
             else
             {
                 DownloadAndInstall();
+                controlBtn.Enabled = false;
             }
         }
 
@@ -131,7 +133,7 @@ namespace Launcher
 
         public void DownloadAndInstall()
         {
-            string tempZipPath = Path.Combine(Path.GetTempPath(), $"{gameString}.zip");
+            string tempZipPath = Path.Combine(Path.GetTempPath(), "GameZip.zip");
 
             try
             {
@@ -148,7 +150,6 @@ namespace Launcher
                     controlBtn.Text = "Updating";
                 else
                     controlBtn.Text = "Installing";
-                controlBtn.Enabled = false;
 
                 worker.RunWorkerAsync(new { Url = ViewState.DownloadUrl, TempZipPath = tempZipPath });
             }
@@ -262,8 +263,11 @@ namespace Launcher
 
             progressBar1.Visible = false;
             lblSize.Visible = false;
+
             controlBtn.Enabled = true;
             controlBtn.Text = "Play";
+
+            uninstallBtn.Visible = true;
 
             if (e.Error != null)
             {
@@ -282,6 +286,16 @@ namespace Launcher
                 MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 versionLb.Text = $"Version: {ViewState.LatestVersion}";
                 controlBtn.Text = "Play";
+
+                string tempZipPath = Path.Combine(Path.GetTempPath(), "GameZip.zip");
+                if (File.Exists(tempZipPath))
+                {
+                    try { File.Delete(tempZipPath); }
+                    catch (Exception er)
+                    {
+                        MessageBox.Show("Không thể xóa file zip tạm: " + er.Message);
+                    }
+                }
             }
         }
 
@@ -301,6 +315,7 @@ namespace Launcher
         {
             // Tìm tất cả các file bắt đầu bằng "unins" và kết thúc bằng ".exe"
             string[] uninsFiles = Directory.GetFiles(rootPath, "unins*.exe");
+            string buildPath = Path.Combine(installPath, $"{gameString}.exe");
 
             if (uninsFiles.Length > 0)
             {
@@ -309,6 +324,22 @@ namespace Launcher
 
                 Process.Start(uninsFile);
                 Application.Exit();
+            }
+            else if (File.Exists(buildPath))
+            {
+                try
+                {
+                    // Xóa toàn bộ thư mục cài đặt
+                    Directory.Delete(installPath, true);
+                    MessageBox.Show("Đã xóa cài đặt thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    controlBtn.Text = "Install";
+                    uninstallBtn.Visible = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi xóa thư mục cài đặt: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
