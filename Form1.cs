@@ -13,11 +13,13 @@ namespace Launcher
 {
     public partial class Launcher : Form
     {
-        private static string gameString = "3D Beginner";
+        private static string gameString = string.Empty;
         private string rootPath = Directory.GetParent(Application.StartupPath).Parent.Parent.FullName;
-        private string versionFile = Path.Combine(Directory.GetParent(Application.StartupPath).Parent.FullName, "version.txt");
-        private string versionContent => File.Exists(versionFile) ? File.ReadAllText(versionFile) : "";
+        private string gameNamePath = Path.Combine(Directory.GetParent(Application.StartupPath).Parent.FullName, "game.txt");
+
         private string installPath => Path.Combine(rootPath, gameString);
+        private string versionFile => Path.Combine(installPath, "version.txt");
+        private string versionContent => File.Exists(versionFile) ? File.ReadAllText(versionFile) : "...";
 
         private readonly HttpClient httpClient = new HttpClient();
         private readonly BackgroundWorker worker = new BackgroundWorker();
@@ -25,6 +27,7 @@ namespace Launcher
         public Launcher()
         {
             InitializeComponent();
+
             httpClient.Timeout = TimeSpan.FromMinutes(5); // Đặt timeout cho HttpClient
             LoadViewStateAndInit();
             label1.Text = gameString;
@@ -32,6 +35,11 @@ namespace Launcher
 
         private async void LoadViewStateAndInit()
         {
+            if (File.Exists(gameNamePath))
+            {
+                gameString = File.ReadAllText(gameNamePath);
+            }
+
             await ViewState.LoadFromApi();
 
             string buildPath = Path.Combine(installPath, $"{gameString}.exe");
@@ -334,6 +342,7 @@ namespace Launcher
                     MessageBox.Show("Đã xóa cài đặt thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     controlBtn.Text = "Install";
+                    versionLb.Text = $"Version: ...";
                     uninstallBtn.Visible = false;
                 }
                 catch (Exception ex)
@@ -347,5 +356,40 @@ namespace Launcher
             }
         }
 
+        private void searchGame_Click(object sender, EventArgs e)
+        {
+            if (!gameNameTxtBx.Visible)
+            {
+                this.AcceptButton = searchGame;
+
+                gameNameTxtBx.Visible = true;
+                gameNameTxtBx.Focus();
+
+                return;
+            }
+
+            if (gameNameTxtBx.Text == string.Empty)
+            {
+                MessageBox.Show("Hãy nhập tên game!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            File.WriteAllText(gameNamePath, gameNameTxtBx.Text);
+
+            ResetForm(gameNameTxtBx.Text);
+        }
+
+        private void ResetForm(string newGameName)
+        {
+            label1.Text = newGameName;
+            controlBtn.Text = "Checking...";
+            controlBtn.Enabled = false;
+            versionLb.Text = "Version: ...";
+            uninstallBtn.Visible = false;
+            gameNameTxtBx.Visible = false;
+            gameNameTxtBx.Text = "";
+
+            LoadViewStateAndInit();
+        }
     }
 }

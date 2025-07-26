@@ -36,6 +36,8 @@
             this.lblSize = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.uninstallBtn = new System.Windows.Forms.Button();
+            this.gameNameTxtBx = new System.Windows.Forms.TextBox();
+            this.searchGame = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,11 +59,11 @@
             this.controlBtn.Enabled = false;
             this.controlBtn.Font = new System.Drawing.Font("Century Schoolbook", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.controlBtn.ImageKey = "(none)";
-            this.controlBtn.Location = new System.Drawing.Point(29, 187);
+            this.controlBtn.Location = new System.Drawing.Point(25, 187);
             this.controlBtn.Name = "controlBtn";
-            this.controlBtn.Size = new System.Drawing.Size(122, 45);
+            this.controlBtn.Size = new System.Drawing.Size(128, 45);
             this.controlBtn.TabIndex = 1;
-            this.controlBtn.Text = "...";
+            this.controlBtn.Text = "Checking...";
             this.controlBtn.UseVisualStyleBackColor = false;
             this.controlBtn.Click += new System.EventHandler(this.controlBtn_Click);
             // 
@@ -123,6 +125,25 @@
             this.uninstallBtn.Visible = false;
             this.uninstallBtn.Click += new System.EventHandler(this.uninstallBtn_Click);
             // 
+            // gameNameTxtBx
+            // 
+            this.gameNameTxtBx.Location = new System.Drawing.Point(537, 13);
+            this.gameNameTxtBx.Name = "gameNameTxtBx";
+            this.gameNameTxtBx.Size = new System.Drawing.Size(167, 20);
+            this.gameNameTxtBx.TabIndex = 8;
+            this.gameNameTxtBx.Visible = false;
+            // 
+            // searchGame
+            // 
+            this.searchGame.BackgroundImage = global::Launcher.Properties.Resources.zoom;
+            this.searchGame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.searchGame.Location = new System.Drawing.Point(684, 12);
+            this.searchGame.Name = "searchGame";
+            this.searchGame.Size = new System.Drawing.Size(20, 20);
+            this.searchGame.TabIndex = 9;
+            this.searchGame.UseVisualStyleBackColor = true;
+            this.searchGame.Click += new System.EventHandler(this.searchGame_Click);
+            // 
             // Launcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -130,6 +151,8 @@
             this.BackgroundImage = global::Launcher.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(716, 351);
+            this.Controls.Add(this.searchGame);
+            this.Controls.Add(this.gameNameTxtBx);
             this.Controls.Add(this.uninstallBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblSize);
@@ -158,6 +181,8 @@
         private System.Windows.Forms.Label lblSize;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button uninstallBtn;
+        private System.Windows.Forms.TextBox gameNameTxtBx;
+        private System.Windows.Forms.Button searchGame;
     }
 }
 
