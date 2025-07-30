@@ -12,3 +12,17 @@ D:\Study Space\Winform\Pulse Frenzy Launcher\Launcher\obj\Debug\Launcher.exe.con
 D:\Study Space\Winform\Pulse Frenzy Launcher\Launcher\bin\Debug\Newtonsoft.Json.dll
 D:\Study Space\Winform\Pulse Frenzy Launcher\Launcher\bin\Debug\Newtonsoft.Json.xml
 D:\Study Space\Winform\Pulse Frenzy Launcher\Launcher\obj\Debug\Launcher.csproj.Up2Date
+D:\StudySpace\Winform\Pulse Frenzy Launcher\Launcher\bin\Debug\Launcher.exe.config
+D:\StudySpace\Winform\Pulse Frenzy Launcher\Launcher\bin\Debug\Launcher.exe
+D:\StudySpace\Winform\Pulse Frenzy Launcher\Launcher\bin\Debug\Launcher.pdb
+D:\StudySpace\Winform\Pulse Frenzy Launcher\Launcher\bin\Debug\Newtonsoft.Json.dll
+D:\StudySpace\Winform\Pulse Frenzy Launcher\Launcher\bin\Debug\Newtonsoft.Json.xml
+D:\StudySpace\Winform\Pulse Frenzy Launcher\Launcher\obj\Debug\Launcher.csproj.AssemblyReference.cache
+D:\StudySpace\Winform\Pulse Frenzy Launcher\Launcher\obj\Debug\Launcher.exe.config
+D:\StudySpace\Winform\Pulse Frenzy Launcher\Launcher\obj\Debug\Launcher.Launcher.resources
+D:\StudySpace\Winform\Pulse Frenzy Launcher\Launcher\obj\Debug\Launcher.Properties.Resources.resources
+D:\StudySpace\Winform\Pulse Frenzy Launcher\Launcher\obj\Debug\Launcher.csproj.GenerateResource.cache
+D:\StudySpace\Winform\Pulse Frenzy Launcher\Launcher\obj\Debug\Launcher.csproj.CoreCompileInputs.cache
+D:\StudySpace\Winform\Pulse Frenzy Launcher\Launcher\obj\Debug\Launcher.csproj.Up2Date
+D:\StudySpace\Winform\Pulse Frenzy Launcher\Launcher\obj\Debug\Launcher.exe
+D:\StudySpace\Winform\Pulse Frenzy Launcher\Launcher\obj\Debug\Launcher.pdb

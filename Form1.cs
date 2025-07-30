@@ -40,7 +40,16 @@ namespace Launcher
                 gameString = File.ReadAllText(gameNamePath);
             }
 
-            await ViewState.LoadFromApi();
+            bool result = await ViewState.LoadFromApi();
+
+            if (!result)
+            {
+                controlBtn.Text = "Install";
+                controlBtn.Enabled = false;
+                versionLb.Text = $"Version: ...";
+
+                return;
+            }
 
             string buildPath = Path.Combine(installPath, $"{gameString}.exe");
 
@@ -69,7 +78,7 @@ namespace Launcher
 
             if (File.Exists(exePath) && !HasNewUpdate())
             {
-                System.Diagnostics.Process.Start(exePath);
+                Process.Start(exePath);
                 Application.Exit();
             }
             else
@@ -84,7 +93,7 @@ namespace Launcher
             public static string DownloadUrl { get; set; }
             public static string LatestVersion { get; set; }
 
-            public static async Task LoadFromApi()
+            public static async Task<bool> LoadFromApi()
             {
                 try
                 {
@@ -112,16 +121,20 @@ namespace Launcher
                         {
                             DownloadUrl = result.data.linkDownload;
                             LatestVersion = result.data.version;
+
+                            return true;
                         }
                         else
                         {
                             MessageBox.Show("Không tìm thấy game trên server");
+                            return false;
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Không thể lấy thông tin game từ server: " + ex.Message);
+                    return false;
                 }
             }
 
