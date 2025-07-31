@@ -30,6 +30,7 @@ namespace Launcher
 
             httpClient.Timeout = TimeSpan.FromMinutes(5); // Đặt timeout cho HttpClient
             LoadViewStateAndInit();
+
             label1.Text = gameString;
         }
 

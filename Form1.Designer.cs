@@ -38,7 +38,9 @@
             this.uninstallBtn = new System.Windows.Forms.Button();
             this.gameNameTxtBx = new System.Windows.Forms.TextBox();
             this.searchGame = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -144,6 +146,17 @@
             this.searchGame.UseVisualStyleBackColor = true;
             this.searchGame.Click += new System.EventHandler(this.searchGame_Click);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.BackgroundImage = global::Launcher.Properties.Resources.Isla_Noctis;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(225, -16);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(265, 177);
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
+            // 
             // Launcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,6 +164,7 @@
             this.BackgroundImage = global::Launcher.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(716, 351);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.searchGame);
             this.Controls.Add(this.gameNameTxtBx);
             this.Controls.Add(this.uninstallBtn);
@@ -167,6 +181,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game Launcher";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,6 +198,7 @@
         private System.Windows.Forms.Button uninstallBtn;
         private System.Windows.Forms.TextBox gameNameTxtBx;
         private System.Windows.Forms.Button searchGame;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
